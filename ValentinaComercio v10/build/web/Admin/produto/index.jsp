@@ -97,9 +97,9 @@
                         <td><%=item.getQuant() %></td>
                         <td><%=item.getCodcategoria().toString() %></td>
                         <td><%=item.getCodmarca().toString() %></td>
-                        <td><img src="../../Fotos/<%=item.getImagem1() %>" width="40" height="40" /> </td>        
+                        <td><img src="../../Fotos/<%=item.getImagem1() %>" width="40" height="40" /> </td>    
                         <td><img src="../../Fotos/<%=item.getImagem2() %>" width="40" height="40" /> </td> 
-                        <td><img src="../../Fotos/<%=item.getImagem3() %>" width="40" height="40" /> </td>        
+                        <td><img src="../../Fotos/<%=item.getImagem3() %>" width="40" height="40" /> </td>      
                         <td><a href="upd.jsp?codigo=<%=item.getCodigo() %>" class="btn  btn-primary btn-sm">Alterar</a>
                             <a href="index.jsp?codigo=<%=item.getCodigo() %>" class="btn  btn-danger btn-sm">Excluir</a>  
                          </td>
