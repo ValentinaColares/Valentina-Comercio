@@ -1,4 +1,12 @@
 
+
+<%@page import="java.util.List"%>
+<%@page import="modelo.Marca"%>
+<%@page import="dao.MarcaDAO"%>
+<%@page import="modelo.Categoria"%>
+<%@page import="dao.CategoriaDAO"%>
+<%@page import="modelo.Produto"%>
+<%@page import="dao.ProdutoDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -18,6 +26,23 @@
 		<script src="js/simpleCart.min.js"> </script>
 	<!-- cart -->
 </head>
+<% 
+    Produto pOBJ = new Produto();
+    ProdutoDAO pDAO = new ProdutoDAO();
+    List <Produto> Plista;
+    Plista = pDAO.listar();
+    
+    Categoria cOBJ = new Categoria();
+    CategoriaDAO cDAO = new CategoriaDAO();
+    List <Categoria> Clista;
+    Clista = cDAO.listar();
+    
+    Marca mOBJ = new Marca();
+    MarcaDAO mDAO = new MarcaDAO();
+    List <Marca> Mlista;
+    Mlista = mDAO.listar();
+
+%>
 <body>
 	<!--header-->
 		<div class="header">
@@ -65,110 +90,25 @@
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	        <ul class="nav navbar-nav">
 			<li><a href="index.html">Home</a></li>
+                        <%for(Categoria Citem: Clista ){ %>
 		        <li class="dropdown">
-		            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Men <b class="caret"></b></a>
+		            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%=Citem.getNome() %> <b class="caret"></b></a>
 		            <ul class="dropdown-menu multi-column columns-3">
 			            <div class="row">
-				            <div class="col-sm-4">
-					            <ul class="multi-column-dropdown">
-						            <li><a class="list" href="products.html">Women</a></li>
-						            <li><a class="list1" href="products.html">PrettySecrets</a></li>
-						            <li><a class="list1" href="products.html">N-Gal</a></li>
-						            <li><a class="list1" href="products.html">Lobster</a></li>
-						            <li><a class="list1" href="products.html">Citypret</a></li>
-					            </ul>
-				            </div>
-				            <div class="col-sm-4">
-					            <ul class="multi-column-dropdown">
-						            <li><a class="list" href="products.html">Kids</a></li>
-						            <li><a class="list1" href="products.html">River Island</a></li>
-						            <li><a class="list1" href="products.html">Penny</a></li>
-						            <li><a class="list1" href="products.html">Nidhi Munim</a></li>
-						            <li><a class="list1" href="products.html">Divaat</a></li>
-					            </ul>
-				            </div>
-				            <div class="col-sm-4">
-					            <ul class="multi-column-dropdown">
-						            <li><a class="list" href="products.html">Men</a></li>
-						            <li><a class="list1" href="products.html">Fiesta Clara</a></li>
-						            <li><a class="list1" href="products.html">Quiksilver</a></li>
-						            <li><a class="list1" href="products.html">Incult</a></li>
-						            <li><a class="list1" href="products.html">Proline</a></li>
-					            </ul>
-				            </div>
+                                        <%for(Marca Mitem: Mlista){ %>
+                                        <div class="col-sm-4">
+                                                <ul class="multi-column-dropdown">
+                                                        <li><a class="list" href="products.html"><%=Mitem.getNome() %></a></li>
+                                                        
+                                                </ul>
+                                        </div>
+                                        <% } %>
 			            </div>
 		            </ul>
 		        </li>
-		        <li class="dropdown">
-		            <a href="#" class="dropdown-toggle" data-toggle="dropdown">women <b class="caret"></b></a>
-		            <ul class="dropdown-menu multi-column columns-3">
-			            <div class="row">
-				            <div class="col-sm-4">
-					           <ul class="multi-column-dropdown">
-						            <li><a class="list" href="products.html">Women</a></li>
-						            <li><a class="list1" href="products.html">PrettySecrets</a></li>
-						            <li><a class="list1" href="products.html">N-Gal</a></li>
-						            <li><a class="list1" href="products.html">Lobster</a></li>
-						            <li><a class="list1" href="products.html">Citypret</a></li>
-					            </ul>
-				            </div>
-				            <div class="col-sm-4">
-					             <ul class="multi-column-dropdown">
-						            <li><a class="list"  href="products.html">Kids</a></li>
-						            <li><a class="list1" href="products.html">River Island</a></li>
-						            <li><a class="list1" href="products.html">Penny</a></li>
-						            <li><a class="list1" href="products.html">Nidhi Munim</a></li>
-						            <li><a class="list1" href="products.html">Divaat</a></li>
-					            </ul>
-				            </div>
-				            <div class="col-sm-4">
-					            <ul class="multi-column-dropdown">
-						            <li><a  class="list" href="products.html">Men</a></li>
-						            <li><a class="list1" href="products.html">Fiesta Clara</a></li>
-						            <li><a class="list1" href="products.html">Quiksilver</a></li>
-						            <li><a class="list1" href="products.html">Incult</a></li>
-						            <li><a class="list1" href="products.html">Proline</a></li>
-					            </ul>
-				            </div>
-			            </div>
-		            </ul>
-		        </li>
-		        <li class="dropdown">
-		        	<a href="#" class="dropdown-toggle" data-toggle="dropdown">kids <b class="caret"></b></a>
-		            <ul class="dropdown-menu multi-column columns-3">
-			            <div class="row">
-				            <div class="col-sm-4">
-					            <ul class="multi-column-dropdown">
-						            <li><a class="list" href="products.html">Women</a></li>
-						            <li><a class="list1" href="products.html">PrettySecrets</a></li>
-						            <li><a class="list1" href="products.html">N-Gal</a></li>
-						            <li><a class="list1" href="products.html">Lobster</a></li>
-						            <li><a class="list1" href="products.html">Citypret</a></li>
-					            </ul>
-				            </div>
-				            <div class="col-sm-4">
-					             <ul class="multi-column-dropdown">
-						            <li><a  class="list" href="products.html">Kids</a></li>
-						            <li><a class="list1" href="products.html">River Island</a></li>
-						            <li><a class="list1" href="products.html">Penny</a></li>
-						            <li><a class="list1" href="products.html">Nidhi Munim</a></li>
-						            <li><a class="list1" href="products.html">Divaat</a></li>
-					            </ul>
-				            </div>
-				            <div class="col-sm-4">
-					            <ul class="multi-column-dropdown">
-						            <li><a class="list" href="products.html">Men</a></li>
-						            <li><a class="list1" href="products.html">Fiesta Clara</a></li>
-						            <li><a class="list1" href="products.html">Quiksilver</a></li>
-						            <li><a class="list1" href="products.html">Incult</a></li>
-						            <li><a class="list1" href="products.html">Proline</a></li>
-					            </ul>
-				            </div>
-			            </div>
-		            </ul>
-		        </li>
-					<li><a href="products.html">Top</a></li>
-					<li><a href="products.html">Bikini</a></li>
+                        <% } %>
+		        
+		        
 	        </ul>
 	    </div>
 	    <!--/.navbar-collapse-->

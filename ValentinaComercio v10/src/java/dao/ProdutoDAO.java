@@ -5,6 +5,7 @@
  */
 package dao;
 
+import java.util.List;
 import modelo.Produto;
 
 /**
@@ -15,5 +16,8 @@ public class ProdutoDAO extends GenericDAO<Produto, Integer> {
     
     public ProdutoDAO(){
         super(Produto.class);
+    }
+    public List<Produto> listaDestaque() throws Exception{ //<!--acrescentar depois -->
+        return em.createNamedQuery("Produto.destaque").getResultList();
     }
 }

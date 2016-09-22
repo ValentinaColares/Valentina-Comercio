@@ -17,6 +17,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedNativeQuery;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -31,6 +32,9 @@ import javax.persistence.Table;
 @NamedQueries({
     @NamedQuery(name = "Produto.findAll", query = "SELECT p FROM Produto p"),
     @NamedQuery(name = "Produto.findFilter", query = "SELECT p FROM Produto p WHERE p.titulo like :filtro")})
+    
+    @NamedNativeQuery(name = "Produto.destaque", query = "SELECT * FROM produto WHERE destaque = true limit 4", resultClass = Produto.class)
+
 public class Produto implements Serializable {
 
     private static final long serialVersionUID = 1L;

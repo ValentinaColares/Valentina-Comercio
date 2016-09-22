@@ -4,10 +4,9 @@
 <%@page import="modelo.Produto"%>
 <%@include file="cabecalho.jsp" %> 
 <% 
-    List<Produto> lista;
-    ProdutoDAO dao = new ProdutoDAO();
-    lista = dao.listar();
+    Plista = pDAO.listaDestaque();
 %>
+
 		<div class="banner-section">
 			<div class="container">
 				<div class="banner-grids">
@@ -110,20 +109,20 @@
 			<h3>Produtos</h3>
 			<div class="gallery-grids">
                             <!--Aqui começa meu produto -->
-                            <%for(Produto item: lista) { %>
+                            <%for(Produto Pitem: Plista) { %>
                             <div class="col-md-3 gallery-grid ">
-                                    <a href="products.html"> <img src="<%=item.getImagem1() %>" class="img-responsive" alt=""/>
+                                    <a href="products.html"> <img src="../../Fotos/<%=Pitem.getImagem1() %>" width="150" height="150" class="img-responsive" alt=""/>
                                     <div class="gallery-info">
                                     <div class="quick">
                                     <p><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> view</p>
                                     </div>
                                     </div></a>
                                     <div class="galy-info">
-                                            <p><%=item.getCodigo() %></p>
-                                            <p><%=item.getTitulo() %></p>
+                                            <p><%=Pitem.getCodigo() %></p>
+                                            <p><%=Pitem.getTitulo() %></p>
                                             <div class="galry">
                                             <div class="prices">
-                                            <h5 class="item_price"><%=item.getPreco() %></h5>
+                                            <h5 class="item_price"><%=Pitem.getPreco() %></h5>
                                             </div>
                                     <div class="rating">
                                                                     <span>?</span>
