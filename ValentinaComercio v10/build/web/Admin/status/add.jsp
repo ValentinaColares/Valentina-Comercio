@@ -12,8 +12,9 @@
     if (request.getParameter("txtDescricao") != null) {
         obj.setDescricao(request.getParameter("txtDescricao"));
         
-        Boolean resultado = false;
+        Boolean resultado;
         resultado = dao.incluir(obj);
+        
         
         if (resultado) {
             msg = "Registro alterado com sucesso";

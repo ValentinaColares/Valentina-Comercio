@@ -79,11 +79,11 @@
                     </div>
                     <div class="form-group">
                         <label>E-mail</label>
-                        <input class="form-control" type="password"  name="txtEmail"  required />
+                        <input class="form-control" type="text"  name="txtEmail"  required />
                     </div>
                     <div class="form-group">
                         <label>Senha</label>
-                        <input class="form-control" type="text"  name="txtSenha"  required />
+                        <input class="form-control" type="password"  name="txtSenha"  required />
                     </div>
                     <div class="form-group">
                         <label>Estado</label>

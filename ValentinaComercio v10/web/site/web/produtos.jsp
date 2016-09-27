@@ -1,232 +1,47 @@
 <%@include file="cabecalho.jsp" %> 
 
+<%
+    Produto obj = new Produto();
+
+
+%>
 
 <div class="product-model">	 
 <div class="container">
         <h2>Our Products</h2>			
          <div class="col-md-9 product-model-sec">
-                                 <a href="single.html"><div class="product-grid">
-                                        <div class="more-product"><span> </span></div>						
-                                        <div class="product-img b-link-stripe b-animate-go  thickbox">
-                                                <img src="images/m1.jpg" class="img-responsive" alt="">
-                                                <div class="b-wrapper">
-                                                <h4 class="b-animate b-from-left  b-delay03">							
-                                                <button> + </button>
-                                                </h4>
-                                                </div>
-                                        </div>
-                                </a>					
-                                        <div class="product-info simpleCart_shelfItem">
-                                                <div class="product-info-cust prt_name">
-                                                        <h4>Product #1</h4>								
-                                                        <span class="item_price">$187.95</span>
-                                                        <div class="ofr">
-                                                          <p class="pric1"><del>Rs 280</del></p>
-                                                  <p class="disc">[12% Off]</p>
-                                                        </div>
-                                                        <input type="text" class="item_quantity" value="1" />
-                                                        <input type="button" class="item_add items" value="+">
-                                                        <div class="clearfix"> </div>
-                                                </div>												
-                                        </div>
+            <!--Começa aqui -->
+         <%
+            for(Produto Pitem : Plista){
+         %>
+        <a href="single.html"><div class="product-grid">
+                <div class="more-product"><span> </span></div>						
+                <div class="product-img b-link-stripe b-animate-go  thickbox">
+                        <img src="<%Pitem.getImagem1(); %>" class="img-responsive" alt="">
+                        <div class="b-wrapper">
+                        <h4 class="b-animate b-from-left  b-delay03">							
+                        <button> + </button>
+                        </h4>
+                        </div>
+                </div>
+        </a>					
+                <div class="product-info simpleCart_shelfItem">
+                        <div class="product-info-cust prt_name">
+                                <h4><%Pitem.getTitulo(); %></h4>								
+                                <span class="item_price"><%Pitem.getPreco(); %></span>
+                                <div class="ofr">
+                                  
+                          <p class="disc"></p>
                                 </div>
-                                <a href="single.html"><div class="product-grid">
-                                        <div class="more-product"><span> </span></div>						
-                                        <div class="product-img b-link-stripe b-animate-go  thickbox">
-                                                <img src="images/m2.jpg" class="img-responsive" alt=""/>
-                                                <div class="b-wrapper">
-                                                <h4 class="b-animate b-from-left  b-delay03">							
-                                                <button> + </button>
-                                                </h4>
-                                                </div>
-                                        </div>
-                                </a>				
-                                        <div class="product-info simpleCart_shelfItem">
-                                                <div class="product-info-cust prt_name">
-                                                        <h4>Product #1</h4>								
-                                                        <span class="item_price">$187.95</span>	
-                                                        <div class="ofr">
-                                                          <p class="pric1"><del>Rs 280</del></p>
-                                                  <p class="disc">[12% Off]</p>
-                                                        </div>
-                                                        <input type="text" class="item_quantity" value="1" />
-                                                        <input type="button" class="item_add items" value="+">
-                                                        <div class="clearfix"> </div>
-                                                </div>						
-                                        </div>
-                                </div>
+                                <input type="text" class="item_quantity" value="<%Pitem.getQuant(); %>" />
+                                <input type="button" class="item_add items" value="+">
+                                <div class="clearfix"> </div>
+                        </div>												
+                </div>
+        </div>
+            <% } %>
+                                     <!-- Acaba aqui -->
 
-                                <a href="single.html"><div class="product-grid">
-                                        <div class="more-product"><span> </span></div>						
-                                        <div class="product-img b-link-stripe b-animate-go  thickbox">
-                                                <img src="images/m3.jpg" class="img-responsive" alt=""/>
-                                                <div class="b-wrapper">
-                                                <h4 class="b-animate b-from-left  b-delay03">							
-                                                <button> + </button>
-                                                </h4>
-                                                </div>
-                                        </div>	</a>					
-                                        <div class="product-info simpleCart_shelfItem">
-                                                <div class="product-info-cust prt_name">
-                                                        <h4>Product #1</h4>								
-                                                        <span class="item_price">$187.95</span>	
-                                                        <div class="ofr">
-                                                          <p class="pric1"><del>Rs 280</del></p>
-                                                  <p class="disc">[12% Off]</p>
-                                                        </div>
-                                                        <input type="text" class="item_quantity" value="1" />
-                                                        <input type="button" class="item_add items" value="+">
-                                                        <div class="clearfix"> </div>
-                                                </div>						
-                                        </div>
-                                </div>
-
-                                <a href="single.html"><div class="product-grid">
-                                        <div class="more-product"><span> </span></div>						
-                                        <div class="product-img b-link-stripe b-animate-go  thickbox">
-                                                <img src="images/m4.jpg" class="img-responsive" alt=""/>
-                                                <div class="b-wrapper">
-                                                <h4 class="b-animate b-from-left  b-delay03">							
-                                                <button> + </button>
-                                                </h4>
-                                                </div>
-                                        </div></a>						
-                                        <div class="product-info simpleCart_shelfItem">
-                                                <div class="product-info-cust prt_name">
-                                                        <h4>Product #1</h4>								
-                                                        <span class="item_price">$187.95</span>	
-                                                        <div class="ofr">
-                                                          <p class="pric1"><del>Rs 280</del></p>
-                                                  <p class="disc">[12% Off]</p>
-                                                        </div>
-                                                        <input type="text" class="item_quantity" value="1" />
-                                                        <input type="button" class="item_add items" value="+">
-                                                        <div class="clearfix"> </div>
-                                                </div>						
-                                        </div>
-                                </div>
-
-                                <a href="single.html"><div class="product-grid">
-                                        <div class="more-product"><span> </span></div>						
-                                        <div class="product-img b-link-stripe b-animate-go  thickbox">
-                                                <img src="images/m5.jpg" class="img-responsive" alt=""/>
-                                                <div class="b-wrapper">
-                                                <h4 class="b-animate b-from-left  b-delay03">							
-                                                <button> + </button>
-                                                </h4>
-                                                </div>
-                                        </div></a>					
-                                        <div class="product-info simpleCart_shelfItem">
-                                                <div class="product-info-cust prt_name">
-                                                        <h4>Product #1</h4>								
-                                                        <span class="item_price">$187.95</span>	
-                                                        <div class="ofr">
-                                                          <p class="pric1"><del>Rs 280</del></p>
-                                                  <p class="disc">[12% Off]</p>
-                                                        </div>
-                                                        <input type="text" class="item_quantity" value="1" />
-                                                        <input type="button" class="item_add items" value="+">
-                                                        <div class="clearfix"> </div>
-                                                </div>						
-                                        </div>
-                                </div>
-
-                                <a href="single.html"><div class="product-grid">
-                                        <div class="more-product"><span> </span></div>						
-                                        <div class="product-img b-link-stripe b-animate-go  thickbox">
-                                                <img src="images/m6.jpg" class="img-responsive" alt=""/>
-                                                <div class="b-wrapper">
-                                                <h4 class="b-animate b-from-left  b-delay03">							
-                                                <button> + </button>
-                                                </h4>
-                                                </div>
-                                        </div></a>				
-                                        <div class="product-info simpleCart_shelfItem">
-                                                <div class="product-info-cust prt_name">
-                                                        <h4>Product #1</h4>								
-                                                        <span class="item_price">$187.95</span>	
-                                                        <div class="ofr">
-                                                          <p class="pric1"><del>Rs 280</del></p>
-                                                  <p class="disc">[12% Off]</p>
-                                                        </div>
-                                                        <input type="text" class="item_quantity" value="1" />
-                                                        <input type="button" class="item_add items" value="+">
-                                                        <div class="clearfix"> </div>
-                                                </div>						
-                                        </div>
-                                </div>
-                                <a href="single.html"><div class="product-grid">
-                                        <div class="more-product"><span> </span></div>						
-                                        <div class="product-img b-link-stripe b-animate-go  thickbox">
-                                                <img src="images/m7.jpg" class="img-responsive" alt=""/>
-                                                <div class="b-wrapper">
-                                                <h4 class="b-animate b-from-left  b-delay03">							
-                                                <button> + </button>
-                                                </h4>
-                                                </div>
-                                        </div>	</a>				
-                                        <div class="product-info simpleCart_shelfItem">
-                                                <div class="product-info-cust prt_name">
-                                                        <h4>Product #1</h4>								
-                                                        <span class="item_price">$187.95</span>	
-                                                        <div class="ofr">
-                                                          <p class="pric1"><del>Rs 280</del></p>
-                                                  <p class="disc">[12% Off]</p>
-                                                        </div>
-                                                        <input type="text" class="item_quantity" value="1" />
-                                                        <input type="button" class="item_add items" value="+">
-                                                        <div class="clearfix"> </div>
-                                                </div>						
-                                        </div>
-                                </div>
-                                <a href="single.html"><div class="product-grid">
-                                        <div class="more-product"><span> </span></div>						
-                                        <div class="product-img b-link-stripe b-animate-go  thickbox">
-                                                <img src="images/m8.jpg" class="img-responsive" alt=""/>
-                                                <div class="b-wrapper">
-                                                <h4 class="b-animate b-from-left  b-delay03">							
-                                                <button> + </button>
-                                                </h4>
-                                                </div>
-                                        </div></a>					
-                                        <div class="product-info simpleCart_shelfItem">
-                                                <div class="product-info-cust prt_name">
-                                                        <h4>Product #1</h4>								
-                                                        <span class="item_price">$187.95</span>	
-                                                        <div class="ofr">
-                                                          <p class="pric1"><del>Rs 280</del></p>
-                                                  <p class="disc">[12% Off]</p>
-                                                        </div>
-                                                        <input type="text" class="item_quantity" value="1" />
-                                                        <input type="button" class="item_add items" value="+">
-                                                        <div class="clearfix"> </div>
-                                                </div>						
-                                        </div>
-                                </div>
-                                <a href="single.html"><div class="product-grid">
-                                        <div class="more-product"><span> </span></div>						
-                                        <div class="product-img b-link-stripe b-animate-go  thickbox">
-                                                <img src="images/m9.jpg" class="img-responsive" alt=""/>
-                                                <div class="b-wrapper">
-                                                <h4 class="b-animate b-from-left  b-delay03">							
-                                                <button> + </button>
-                                                </h4>
-                                                </div>
-                                        </div>	</a>				
-                                        <div class="product-info simpleCart_shelfItem">
-                                                <div class="product-info-cust prt_name">
-                                                        <h4>Product #1</h4>								
-                                                        <span class="item_price">$187.95</span>	
-                                                        <div class="ofr">
-                                                          <p class="pric1"><del>Rs 280</del></p>
-                                                  <p class="disc">[12% Off]</p>
-                                                        </div>
-                                                        <input type="text" class="item_quantity" value="1" />
-                                                        <input type="button" class="item_add items" value="+">
-                                                        <div class="clearfix"> </div>
-                                                </div>						
-                                        </div>
-                                </div>
                         </div>	
                 <div class="rsidebar span_1_of_left">
                          <section  class="sky-form">
