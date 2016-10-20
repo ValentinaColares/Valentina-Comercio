@@ -32,6 +32,14 @@ public class Carrinho {
         this.total = total;
     }
 
-    
+    public Double valorTotal(){
+        Double resultado = 0.0;
+        for(ItemCarrinho item: listaCarrinho){
+            resultado = item.getProduto().getPreco().doubleValue() * item.getQuantidade();
+            resultado = resultado + resultado;
+        }
+         
+        return resultado;
+    }
     
 }

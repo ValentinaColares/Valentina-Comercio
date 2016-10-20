@@ -13,19 +13,20 @@
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     
     <properties>
-        <!--
+        
       <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/comercio"/>
       <property name="javax.persistence.jdbc.user" value="postgres"/>
       <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
       <property name="javax.persistence.jdbc.password" value="postgres"/>
-        -->
-      
+        
+      <!--
       <property name="javax.persistence.jdbc.url"
             value="jdbc:postgresql://localhost:5432/comercioValentina"/>
       <property name="javax.persistence.jdbc.user" value="marcelo"/>
       <property name="javax.persistence.jdbc.password" value="siedler@2015"/>
       
       <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+      -->
     </properties>
     
   </persistence-unit>

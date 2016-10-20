@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
-
+//T = classe, I = tipo
 public abstract class GenericDAO<T, I extends Serializable> {
 
 

@@ -62,10 +62,11 @@
 				<ul>
 					<li class="text"><a href="login.html">login</a></li>
 					<li><div class="cart box_1">
-							<a href="checkout.html">
-								 <span class="simpleCart_total"> $0.00 </span> (<span id="simpleCart_quantity" class="simpleCart_quantity"> 0 </span>)
+							<a href="carrinho.jsp">
+                                                            <p>Carrinho de Compras</p>
+								<!-- <span class="simpleCart_total">Carrinho de Compras</span> (<span id="simpleCart_quantity" class="simpleCart_quantity"> 0 </span>) -->
 							</a>	
-							<p><a href="javascript:;" class="simpleCart_empty">Empty cart</a></p>
+							
 							<div class="clearfix"> </div>
 						</div></li>
 				</ul>

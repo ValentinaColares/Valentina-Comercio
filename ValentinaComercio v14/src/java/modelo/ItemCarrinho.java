@@ -5,6 +5,8 @@
  */
 package modelo;
 
+import java.math.BigDecimal;
+
 /**
  *
  * @author aluno
@@ -28,7 +30,5 @@ public class ItemCarrinho {
     public void setQuantidade(Integer quantidade) {
         this.quantidade = quantidade;
     }
-    
-    
     
 }
