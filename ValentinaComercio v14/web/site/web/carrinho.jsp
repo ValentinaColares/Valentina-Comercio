@@ -1,12 +1,31 @@
+<%@page import="modelo.Carrinho"%>
 <%@page import="modelo.ItemCarrinho"%>
 <%@include file="cabecalho.jsp" %>
 
-<%
-    Produto obj = pDAO.buscarPorChavePrimaria(Integer.parseInt(request.getParameter("txtCodigo")));
-    ItemCarrinho Icarrinho = new ItemCarrinho();
+<%    
+    //se o envio for post add o carrinho
+    if(request.getMethod().equals("POST")){
+        Integer codigoCar = Integer.parseInt(request.getParameter("txtCodigo"));
+        Integer qtd = Integer.parseInt(request.getParameter("txtQuantidade"));
+        //verificar se ja existe o carrinho
+        if(session.getAttribute("Carrinho") != null){
+            Carrinho carrinho = (Carrinho)session.getAttribute("Carrinho");
+            ItemCarrinho item = new ItemCarrinho();
+            item.setQuantidade(qtd);
+            Produto produto = pDAO.buscarPorChavePrimaria(codigoCar);
+            item.setProduto(produto);
+            
+            //adiciona ao carrinho
+            carrinho.getListaCarrinho().add(item);
+            carrinho.valorTotal();
+            
+        }
+    }
     
-    if(request.getParameter("txtCodigo") == null || request.getParameter("txtQuantidade") == null){
-        //volta pra tela da listagem
+    
+    
+    /*if(request.getParameter("txtCodigo") == null || request.getParameter("txtQuantidade") == null){
+        
     }else{ 
         if(session.getAttribute("CarrinhoCompras") != null){
             Icarrinho.setProduto(obj);
@@ -17,7 +36,7 @@
             Icarrinho.setQuantidade(Integer.parseInt(request.getParameter("txtQuantidade")));
         }
         
-    }
+    } */
     
     
 

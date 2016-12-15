@@ -88,8 +88,8 @@
                                                 </div>
                                             </form>
                                             <div class="tag">
-                                                    <p>Category : <a href="#"> <%=obj.getCodcategoria().getNome()%> </a></p>
-                                                    <p>Tag : <a href="#"> Lorem ipsum </a></p>
+                                                    <p>Categoria: <a href="#"> <%=obj.getCodcategoria().getNome()%> </a></p>
+                                                    <p>Marca: <a href="#"> <%=obj.getCodmarca().getNome() %> </a></p>
                                             </div>
                             </div>
                             <div class="clearfix"> </div>
