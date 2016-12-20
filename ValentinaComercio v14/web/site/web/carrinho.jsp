@@ -1,44 +1,44 @@
+<%@page import="java.util.ArrayList"%>
 <%@page import="modelo.Carrinho"%>
 <%@page import="modelo.ItemCarrinho"%>
 <%@include file="cabecalho.jsp" %>
 
 <%    
     //se o envio for post add o carrinho
+    Carrinho carrinho;
+    if(session.getAttribute("carrinho")!= null){
+        carrinho = (Carrinho)session.getAttribute("carrinho");
+    }else{
+        carrinho = new Carrinho();
+    }
     if(request.getMethod().equals("POST")){
         Integer codigoCar = Integer.parseInt(request.getParameter("txtCodigo"));
         Integer qtd = Integer.parseInt(request.getParameter("txtQuantidade"));
-        //verificar se ja existe o carrinho
-        if(session.getAttribute("Carrinho") != null){
-            Carrinho carrinho = (Carrinho)session.getAttribute("Carrinho");
-            ItemCarrinho item = new ItemCarrinho();
-            item.setQuantidade(qtd);
-            Produto produto = pDAO.buscarPorChavePrimaria(codigoCar);
-            item.setProduto(produto);
-            
-            //adiciona ao carrinho
-            carrinho.getListaCarrinho().add(item);
-            carrinho.valorTotal();
-            
-        }
-    }
     
-    
-    
-    /*if(request.getParameter("txtCodigo") == null || request.getParameter("txtQuantidade") == null){
+      
         
-    }else{ 
-        if(session.getAttribute("CarrinhoCompras") != null){
-            Icarrinho.setProduto(obj);
-            Icarrinho.setQuantidade(Integer.parseInt(request.getParameter("txtQuantidade")));
+       
+        ItemCarrinho itemCarrinho = new ItemCarrinho();
+        itemCarrinho.setQuantidade(qtd);
+        Produto produto = pDAO.buscarPorChavePrimaria(codigoCar);
+        itemCarrinho.setProduto(produto);
+        
+        //adiciona ao carrinho
+        //verificar se a lista ja existe
+        if(carrinho.getListaCarrinho() == null){
+            List <ItemCarrinho> listaCarrinho = new ArrayList<ItemCarrinho>();
+            listaCarrinho.add(itemCarrinho);
+            carrinho.setListaCarrinho(listaCarrinho);
         }else{
-            Icarrinho = new ItemCarrinho();
-            Icarrinho.setProduto(obj);
-            Icarrinho.setQuantidade(Integer.parseInt(request.getParameter("txtQuantidade")));
+            carrinho.getListaCarrinho().add(itemCarrinho);
         }
         
-    } */
-    
-    
+        carrinho.valorTotal();
+        //salva o meu carrinho
+        session.setAttribute("Carrinho", carrinho);
+        
+    }
+       
 
 %>
 
@@ -57,18 +57,23 @@
                </script>
              <div class="cart-header">
                      <div class="close1"> </div>
+                    <% 
+                        if(carrinho.getListaCarrinho() != null){
+                            for(ItemCarrinho item: carrinho.getListaCarrinho()){
+                                
+                    %>
                     <div class="cart-sec simpleCart_shelfItem">
                                     <div class="cart-item cyc">
-                                             <img src="../../Fotos/<%=obj.getImagem1() %>" class="img-responsive" alt="">
+                                             <img src="../../Fotos/<%=item.getProduto().getImagem1() %>" class="img-responsive" alt="">
                                     </div>
                                <div class="cart-item-info">
-                                    <h3><a href="#"> <%=obj.getTitulo()%> </a></h3>
+                                    <h3><a href="#"> <%=item.getProduto().getTitulo()%> </a></h3>
                                     <ul class="qty">
                                             <li><p>Min. order value:</p></li>
                                             <li><p>FREE delivery</p></li>
                                     </ul>
                                              <div class="delivery">
-                                             <p>Preço : <%=obj.getPreco()%></p>
+                                             <p>Preço : <%=item.getProduto().getPreco()%></p>
                                              <!-- <span>Delivered in 1-1:30 hours</span> -->
                                              <div class="clearfix"></div>
                             </div>	
@@ -76,10 +81,14 @@
                                <div class="clearfix"></div>
 
                     </div>
+                    <%      }
+                        } 
+                    %>  
+                    
                     <form action="finalizarCompra.jsp" method="post">      
                         
                         <div class="btn_form">
-                            <button class="add-cart item_add">Adicionar ao carrinho</button>	
+                            <button class="add-cart item_add">Finalizar Compra</button>	
                         </div>
                     </form>
              </div>
