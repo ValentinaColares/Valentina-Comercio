@@ -35,7 +35,9 @@
         
         carrinho.valorTotal();
         //salva o meu carrinho
-        session.setAttribute("Carrinho", carrinho);
+        
+        //fazer um if para comparar oq vem do banco
+        session.setAttribute("carrinho", carrinho);
         
     }
        
@@ -68,14 +70,17 @@
                                     </div>
                                <div class="cart-item-info">
                                     <h3><a href="#"> <%=item.getProduto().getTitulo()%> </a></h3>
-                                    <ul class="qty">
+                                    <br>
+                                    <p>Quantidade: <%=item.getQuantidade() %></p>
+                                    <!-- <ul class="qty">
                                             <li><p>Min. order value:</p></li>
                                             <li><p>FREE delivery</p></li>
-                                    </ul>
-                                             <div class="delivery">
-                                             <p>Preço : <%=item.getProduto().getPreco()%></p>
-                                             <!-- <span>Delivered in 1-1:30 hours</span> -->
-                                             <div class="clearfix"></div>
+                                    </ul> -->
+                           
+                            <div class="delivery">
+                                <p>Preço : <%=item.getProduto().getPreco()%></p>
+                                 <!-- <span>Delivered in 1-1:30 hours</span> -->
+                                <div class="clearfix"></div>
                             </div>	
                                </div>
                                <div class="clearfix"></div>

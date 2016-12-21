@@ -11,7 +11,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-    <title>Swim Wear a E-Commerce online Shopping Category Flat Bootstrap Responsive Website Template | Home :: w3layouts</title>
+    <title>Lojas CRUD</title>
     <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>
     <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
     <link href="css/owl.carousel.css" rel="stylesheet">
@@ -58,19 +58,18 @@
 						<option value="3">German</option>
 					</select>
    			</div>
-				<div class="top-right">
-				<ul>
-					<li class="text"><a href="login.html">login</a></li>
-					<li><div class="cart box_1">
-							<a href="carrinho.jsp">
-                                                            <p>Carrinho de Compras</p>
-								<!-- <span class="simpleCart_total">Carrinho de Compras</span> (<span id="simpleCart_quantity" class="simpleCart_quantity"> 0 </span>) -->
-							</a>	
-							
-							<div class="clearfix"> </div>
-						</div></li>
-				</ul>
-				</div>
+			<div class="top-right">
+                            <ul>
+                                <li class="text"><a href="login.jsp">login</a></li>
+                                <li><div class="cart box_1">
+                                        <a href="carrinho.jsp">
+                                            <span class="simpleCart_total"> R$0.00 </span> (<span id="simpleCart_quantity" class="simpleCart_quantity"> 0 </span>)
+                                        </a>	
+                                        <p><a href="javascript:;" class="simpleCart_empty">Esvaziar carrinho</a></p>
+                                        <div class="clearfix"> </div>
+                                    </div></li>
+                            </ul>
+                        </div>
 				<div class="clearfix"></div>
 			</div>
 			</div>
@@ -134,7 +133,7 @@
 			   <div class="search-box">
 					<div id="sb-search" class="sb-search">
 						<form>
-							<input class="sb-search-input" placeholder="Enter your search term..." type="search" name="search" id="search">
+							<input class="sb-search-input" placeholder="Pesquisar..." type="search" name="search" id="search">
 							<input class="sb-search-submit" type="submit" value="">
 							<span class="sb-icon-search"> </span>
 						</form>

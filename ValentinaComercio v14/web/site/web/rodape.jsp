@@ -1,5 +1,6 @@
 <div class="footer-section">
-
+    
+    
         <div class="subscribe">
              <div class="container">
              <div class="subscribe1">
@@ -7,7 +8,7 @@
                      </div>
                      <div class="subscribe2">
                      <form>
-                             <input type="text" class="text" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}">
+                             <input type="text" class="text" value="E-mail" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}">
                              <input type="submit" value="JOIN">
                      </form>
              </div>
@@ -15,7 +16,7 @@
              </div>
         </div>
 
-
+    <br><br>
         <div class="container">
             <div class="footer-grids">
                 <div class="col-md-2 footer-grid">
