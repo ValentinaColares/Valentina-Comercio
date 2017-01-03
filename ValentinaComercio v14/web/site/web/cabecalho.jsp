@@ -1,5 +1,7 @@
 
 
+<%@page import="dao.ClienteDAO"%>
+<%@page import="modelo.Cliente"%>
 <%@page import="java.util.List"%>
 <%@page import="modelo.Marca"%>
 <%@page import="dao.MarcaDAO"%>
@@ -41,6 +43,9 @@
     MarcaDAO mDAO = new MarcaDAO();
     List <Marca> Mlista;
     Mlista = mDAO.listar();
+    
+    Cliente cobj = new Cliente();
+    ClienteDAO Clientedao = new ClienteDAO();
     
     Integer codigo = 0;
 

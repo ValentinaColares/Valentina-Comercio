@@ -1,4 +1,18 @@
+<%@page import="util.Criptografia"%>
 <%@include file="cabecalho.jsp" %>
+
+<% 
+
+    if (request.getParameter("txtEmail") == null && request.getParameter("txtSenha") == null) {
+        cobj.setNome(request.getParameter("txtNome"));
+        cobj.setEmail(request.getParameter("txtEmail"));
+        if(request.getParameter("txtSenha") == request.getParameter("txtConfirmaSenha")){
+            cobj.setSenha(Criptografia.convertPasswordToMD5(request.getParameter("txtSenha")));
+            Boolean resultado = Clientedao.incluir(cobj);
+        }        
+    }
+%>
+
 
 <div class="content">
  <!-- registration -->
@@ -29,7 +43,7 @@
 							 </div>
 							 <div class="wow fadeInRight" data-wow-delay="0.4s">
 								<span>Confirma Senha<label>*</label></span>
-								<input type="password" name="txtSenha">
+								<input type="password" name="txtConfirmaSenha">
 							 </div>
 					 </div>
 				</form>

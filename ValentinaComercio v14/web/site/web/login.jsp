@@ -1,18 +1,26 @@
-<%@page import="dao.ClienteDAO"%>
 <%@page import="util.Criptografia"%>
-<%@page import="modelo.Cliente"%>
 <%@include file="cabecalho.jsp" %>
 
 <% 
-    Cliente cobj = new Cliente();
-    ClienteDAO Clientedao = new ClienteDAO();
     
     
-    if (request.getParameter("txtEmail") != null) {
-        cobj.setEmail(request.getParameter("txtEmail"));
-        cobj.setSenha(Criptografia.convertPasswordToMD5(request.getParameter("txtSenha")));
-        Boolean resultado = Clientedao.incluir(cobj);
-    } 
+    
+    if (request.getParameter("txtEmail") != null && request.getParameter("txtSenha") != null) {
+        //cobj.setEmail(request.getParameter("txtEmail"));
+        //cobj.setSenha(Criptografia.convertPasswordToMD5(request.getParameter("txtSenha")));
+        //Boolean resultado = Clientedao.incluir(cobj);
+        //tentativa de login
+        
+        String loginCerto = cobj.getEmail();
+        String senhaCerta = cobj.getSenha();
+        if(request.getParameter("txtEmail").equals(loginCerto) && request.getParameter("txtSenha").equals(senhaCerta)){
+            //criar a minha session
+            session.setAttribute("jogador", request.getParameter("txtLogin"));
+            //redirecionar para home
+            response.sendRedirect("index.jsp");
+        }
+    }
+
 %>
 
 		<!--contact-->
@@ -29,7 +37,7 @@
 			   <div class="col-md-6 login-right">
 			  	<h3>REGISTRO DE CLIENTES</h3>
 				<p>Se você já possui uma conta conosco, por favor, logue-se.</p>
-				<form>
+			<form action="login.jsp" method="post">
 				  <div>
 					<span>E-mail:<label>*</label></span>
                                         <input type="text" name="txtEmail" required > 

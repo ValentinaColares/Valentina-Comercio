@@ -4,6 +4,7 @@
 <%@include file="cabecalho.jsp" %>
 
 <%    
+   
     //se o envio for post add o carrinho
     Carrinho carrinho;
     if(session.getAttribute("carrinho")!= null){
@@ -25,12 +26,24 @@
         
         //adiciona ao carrinho
         //verificar se a lista ja existe
+         //vejo se o produto ja existe no carrinho com um for para percorrer a lista de itens, se o codigo for igual incrementa a quantidade
         if(carrinho.getListaCarrinho() == null){
             List <ItemCarrinho> listaCarrinho = new ArrayList<ItemCarrinho>();
             listaCarrinho.add(itemCarrinho);
             carrinho.setListaCarrinho(listaCarrinho);
+                  
         }else{
-            carrinho.getListaCarrinho().add(itemCarrinho);
+            boolean achou = false;
+            for(ItemCarrinho item2: carrinho.getListaCarrinho()){
+                if(item2.getProduto().getCodigo() == codigoCar){
+                    item2.setQuantidade(item2.getQuantidade() + Integer.parseInt(request.getParameter("txtQuantidade")));
+                    achou = true;
+                    break;
+                }
+                if(!achou){
+                    carrinho.getListaCarrinho().add(itemCarrinho);
+                }
+            }
         }
         
         carrinho.valorTotal();
