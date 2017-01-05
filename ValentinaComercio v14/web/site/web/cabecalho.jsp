@@ -46,6 +46,7 @@
     
     Cliente cobj = new Cliente();
     ClienteDAO Clientedao = new ClienteDAO();
+    List<Cliente> cliLista = Clientedao.listar();
     
     Integer codigo = 0;
 

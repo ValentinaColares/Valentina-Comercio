@@ -1,23 +1,19 @@
 <%@page import="util.Criptografia"%>
 <%@include file="cabecalho.jsp" %>
 
-<% 
-    
-    
-    
-    if (request.getParameter("txtEmail") != null && request.getParameter("txtSenha") != null) {
-        //cobj.setEmail(request.getParameter("txtEmail"));
-        //cobj.setSenha(Criptografia.convertPasswordToMD5(request.getParameter("txtSenha")));
-        //Boolean resultado = Clientedao.incluir(cobj);
+<%   
+    if (request.getMethod().equals("POST")) {
         //tentativa de login
         
-        String loginCerto = cobj.getEmail();
-        String senhaCerta = cobj.getSenha();
-        if(request.getParameter("txtEmail").equals(loginCerto) && request.getParameter("txtSenha").equals(senhaCerta)){
-            //criar a minha session
-            session.setAttribute("jogador", request.getParameter("txtLogin"));
-            //redirecionar para home
-            response.sendRedirect("index.jsp");
+        for (Cliente itemC: cliLista) {  
+            String loginCerto = itemC.getEmail();
+            String senhaCerta = itemC.getSenha();
+            if(request.getParameter("txtEmail").equals(loginCerto) && request.getParameter("txtSenha").equals(senhaCerta)){
+                //criar a minha session
+                session.setAttribute("cliente", itemC.getNome());
+                //redirecionar para home
+                response.sendRedirect("produtos.jsp");
+            }
         }
     }
 
@@ -37,10 +33,10 @@
 			   <div class="col-md-6 login-right">
 			  	<h3>REGISTRO DE CLIENTES</h3>
 				<p>Se você já possui uma conta conosco, por favor, logue-se.</p>
-			<form action="login.jsp" method="post">
+                                <form  method="post" action="#">
 				  <div>
 					<span>E-mail:<label>*</label></span>
-                                        <input type="text" name="txtEmail" required > 
+                                        <input type="email" name="txtEmail" required > 
 				  </div>
 				  <div>
 					<span>Sua Senha<label>*</label></span>
