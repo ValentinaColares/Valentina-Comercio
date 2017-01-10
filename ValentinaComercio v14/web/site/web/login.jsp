@@ -5,16 +5,17 @@
     if (request.getMethod().equals("POST")) {
         //tentativa de login
         
-        for (Cliente itemC: cliLista) {  
-            String loginCerto = itemC.getEmail();
-            String senhaCerta = itemC.getSenha();
-            if(request.getParameter("txtEmail").equals(loginCerto) && request.getParameter("txtSenha").equals(senhaCerta)){
-                //criar a minha session
-                session.setAttribute("cliente", itemC.getNome());
-                //redirecionar para home
-                response.sendRedirect("produtos.jsp");
-            }
+        cobj = Clientedao.login(request.getParameter("txtEmail"));
+        
+        String loginCerto = cobj.getEmail();
+        String senhaCerta = cobj.getSenha();
+        if(request.getParameter("txtEmail").equals(loginCerto) && request.getParameter("txtSenha").equals(senhaCerta)){
+            //criar a minha session
+            session.setAttribute("cliente", cobj);
+            //redirecionar para home
+            response.sendRedirect("index.jsp");
         }
+        
     }
 
 %>

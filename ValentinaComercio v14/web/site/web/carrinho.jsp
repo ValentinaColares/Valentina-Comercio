@@ -33,14 +33,14 @@
             carrinho.setListaCarrinho(listaCarrinho);
                   
         }else{
-            boolean achou = false;
+            boolean certo = false;
             for(ItemCarrinho item2: carrinho.getListaCarrinho()){
                 if(item2.getProduto().getCodigo() == codigoCar){
                     item2.setQuantidade(item2.getQuantidade() + Integer.parseInt(request.getParameter("txtQuantidade")));
-                    achou = true;
+                    certo = true;
                     break;
                 }
-                if(!achou){
+                if(!certo){
                     carrinho.getListaCarrinho().add(itemCarrinho);
                 }
             }

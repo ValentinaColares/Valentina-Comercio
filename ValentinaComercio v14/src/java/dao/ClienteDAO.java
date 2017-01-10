@@ -16,4 +16,7 @@ public class ClienteDAO extends GenericDAO<Cliente, Integer> {
     public ClienteDAO(){
         super(Cliente.class);
     }
+    public Cliente login(String filtro) throws Exception{
+        return (Cliente)em.createNamedQuery("Cliente.findByEmail").setParameter("filtro", filtro).getSingleResult();
+    }
 }

@@ -24,6 +24,7 @@ import javax.persistence.Table;
 @Table(name = "cliente")
 @NamedQueries({
     @NamedQuery(name = "Cliente.findAll", query = "SELECT c FROM Cliente c"),
+    @NamedQuery(name = "Cliente.findByEmail", query = "SELECT c FROM Cliente c WHERE c.email = :filtro"),
     @NamedQuery(name = "Cliente.findFilter", query = "SELECT c FROM Cliente c WHERE c.nome like :filtro")})
 public class Cliente implements Serializable {
 
