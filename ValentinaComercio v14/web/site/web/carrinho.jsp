@@ -31,15 +31,12 @@
             carrinho.setListaCarrinho(listaCarrinho);
                   
         }
+        //ItemCarrinho itemTemp = carrinho.metodo que eu vou fazer        
         else if(carrinho.getListaCarrinho() != null){
-            boolean certo = false;
             for(ItemCarrinho item: carrinho.getListaCarrinho()){
                 if(item.getProduto().getCodigo() == codigoCar){
-                    item.setQuantidade(item.getQuantidade() + Integer.parseInt(request.getParameter("txtQuantidade")));
-                    certo = true;
-                    
-                }
-                if(!certo){
+                    item.setQuantidade(item.getQuantidade() + Integer.parseInt(request.getParameter("txtQuantidade")));                    
+                }else{
                     carrinho.getListaCarrinho().add(itemCarrinho);
                 }
             }
