@@ -10,15 +10,13 @@
     if(session.getAttribute("carrinho")!= null){
         carrinho = (Carrinho)session.getAttribute("carrinho");
     }else{
-        carrinho = new Carrinho();
+        carrinho = new Carrinho(); //não preciso por um set atribute aqui?
     }
+    
     if(request.getMethod().equals("POST")){
         Integer codigoCar = Integer.parseInt(request.getParameter("txtCodigo"));
         Integer qtd = Integer.parseInt(request.getParameter("txtQuantidade"));
     
-      
-        
-       
         ItemCarrinho itemCarrinho = new ItemCarrinho();
         itemCarrinho.setQuantidade(qtd);
         Produto produto = pDAO.buscarPorChavePrimaria(codigoCar);
@@ -32,13 +30,14 @@
             listaCarrinho.add(itemCarrinho);
             carrinho.setListaCarrinho(listaCarrinho);
                   
-        }else{
+        }
+        else if(carrinho.getListaCarrinho() != null){
             boolean certo = false;
-            for(ItemCarrinho item2: carrinho.getListaCarrinho()){
-                if(item2.getProduto().getCodigo() == codigoCar){
-                    item2.setQuantidade(item2.getQuantidade() + Integer.parseInt(request.getParameter("txtQuantidade")));
+            for(ItemCarrinho item: carrinho.getListaCarrinho()){
+                if(item.getProduto().getCodigo() == codigoCar){
+                    item.setQuantidade(item.getQuantidade() + Integer.parseInt(request.getParameter("txtQuantidade")));
                     certo = true;
-                    break;
+                    
                 }
                 if(!certo){
                     carrinho.getListaCarrinho().add(itemCarrinho);

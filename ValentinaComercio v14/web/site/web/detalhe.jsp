@@ -81,7 +81,7 @@
                                             </div>
                                             <form action="carrinho.jsp" method="post"> 
                                                 <input type="hidden" name="txtCodigo" value="<%=obj.getCodigo()%>"/>
-                                                <p class="qty"> Qtd : </p><input min="1" type="number" id="quantity" name="txtQuantidade" value="1" class="form-control input-small">
+                                                <p class="qty"> Quantidade: </p><input min="1" type="number" id="quantity" name="txtQuantidade" value="1" class="form-control input-small">
                                                 
                                                 <div class="btn_form">
                                                     <button class="add-cart item_add">Adicionar ao carrinho</button>	

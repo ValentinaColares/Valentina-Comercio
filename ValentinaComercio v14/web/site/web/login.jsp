@@ -5,15 +5,15 @@
     if (request.getMethod().equals("POST")) {
         //tentativa de login
         
-        cobj = Clientedao.login(request.getParameter("txtEmail"));
-        
-        String loginCerto = cobj.getEmail();
-        String senhaCerta = cobj.getSenha();
-        if(request.getParameter("txtEmail").equals(loginCerto) && request.getParameter("txtSenha").equals(senhaCerta)){
+        Cliente cliente = Clientedao.login(request.getParameter("txtEmail"));
+        //arrumar login...
+        String loginCerto = cliente.getEmail();
+        String senhaCerta = cliente.getSenha();
+        if(Criptografia.convertPasswordToMD5(request.getParameter("txtSenha")).equals(senhaCerta)){
             //criar a minha session
-            session.setAttribute("cliente", cobj);
+            session.setAttribute("cliente", cliente);
             //redirecionar para home
-            response.sendRedirect("index.jsp");
+            response.sendRedirect("index.jsp"); //depois eu vou direto pra venda
         }
         
     }
