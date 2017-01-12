@@ -7,13 +7,12 @@
         
         Cliente cliente = Clientedao.login(request.getParameter("txtEmail"));
         //arrumar login...
-        String loginCerto = cliente.getEmail();
         String senhaCerta = cliente.getSenha();
         if(Criptografia.convertPasswordToMD5(request.getParameter("txtSenha")).equals(senhaCerta)){
             //criar a minha session
             session.setAttribute("cliente", cliente);
             //redirecionar para home
-            response.sendRedirect("index.jsp"); //depois eu vou direto pra venda
+            response.sendRedirect("resumoVenda.jsp"); //depois eu vou direto pra venda
         }
         
     }

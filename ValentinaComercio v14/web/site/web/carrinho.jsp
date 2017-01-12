@@ -33,12 +33,16 @@
         }
         //ItemCarrinho itemTemp = carrinho.metodo que eu vou fazer        
         else if(carrinho.getListaCarrinho() != null){
+            Boolean certo = false;
             for(ItemCarrinho item: carrinho.getListaCarrinho()){
                 if(item.getProduto().getCodigo() == codigoCar){
-                    item.setQuantidade(item.getQuantidade() + Integer.parseInt(request.getParameter("txtQuantidade")));                    
-                }else{
-                    carrinho.getListaCarrinho().add(itemCarrinho);
+                    item.setQuantidade(item.getQuantidade() + Integer.parseInt(request.getParameter("txtQuantidade")));   
+                    certo = true;
                 }
+                
+            }
+            if(!certo){
+                carrinho.getListaCarrinho().add(itemCarrinho);
             }
         }
         
@@ -99,13 +103,12 @@
                         } 
                     %>  
                     
-                    <form action="finalizarCompra.jsp" method="post">      
+                   
                         
                         <div class="btn_form">
-                            <button class="add-cart item_add">Finalizar Compra</button>	
+                            <a href="login.jsp" class="add-cart item_add">Finalizar Compra</a>	
                         </div>
-                    </form>
-             </div>
+                                </div>
              <script>$(document).ready(function(c) {
                             $('.close2').on('click', function(c){
                                             $('.cart-header2').fadeOut('slow', function(c){
