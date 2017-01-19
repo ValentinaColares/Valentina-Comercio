@@ -1,13 +1,21 @@
+<%@page import="dao.VendaDAO"%>
+<%@page import="java.util.Date"%>
+<%@page import="modelo.Venda"%>
+<%@page import="dao.ItemvendaDAO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="modelo.Itemvenda"%>
-<%@page import="modelo.Venda"%>
 <%@page import="modelo.ItemCarrinho"%>
 <%@page import="modelo.Carrinho"%>
 <%@include file="cabecalho.jsp" %>
 <%
     Carrinho carrinho = new Carrinho();
-    Venda venda = new Venda();
+    Itemvenda itemVenda = new Itemvenda();
     Cliente cliente = new Cliente();
+    ItemvendaDAO itemVendaDAO = new ItemvendaDAO();
+    Venda venda = new Venda();
+    VendaDAO vendaDAO = new VendaDAO();
+    List<Itemvenda> listItemvenda = new ArrayList();
+    Date data = new Date();
 
     if (session.getAttribute("carrinho") != null && session.getAttribute("cliente") != null) {
         carrinho = (Carrinho) session.getAttribute("carrinho");
@@ -21,7 +29,26 @@
         response.sendRedirect("index.jsp");
 
     }
+    for(ItemCarrinho itemCar: carrinho.getListaCarrinho() ){
+        itemVenda.setProduto(itemCar.getProduto());
+        itemVenda.setPreco(itemCar.getProduto().getPreco().doubleValue());
+        itemVenda.setQuant(itemCar.getQuantidade());
+        //itemVenda.setItemvendaPK(itemvendaPK);
+        listItemvenda.add(itemVenda);
+        
+        itemVendaDAO.incluir(itemVenda);
+    }
+    
+    venda.setCodcliente(cliente.getCodigo());
+    venda.setCodstatus(1);
+    venda.setDatavenda(data);
+    venda.setTotal(carrinho.valorTotal());  
+    venda.setItemvendaList(listItemvenda);
+    
+    vendaDAO.incluir(venda);
 
+    
+    
 
 %>  
     
