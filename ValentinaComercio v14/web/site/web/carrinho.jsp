@@ -46,6 +46,7 @@
             }
         }
         
+        
         carrinho.valorTotal();
         //salva o meu carrinho
         

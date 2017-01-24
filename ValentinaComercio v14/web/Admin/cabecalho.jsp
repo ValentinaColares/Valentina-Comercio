@@ -85,10 +85,13 @@
                         <a href="../cliente/index.jsp"><i class="fa fa-fw fa-edit"></i> Cliente</a>
                     </li>
                     <li>
-                        <a href="../produto/index.jsp"><i class="fa fa-fw fa-bar-chart-o"></i> Produto</a>
+                        <a href="../produto/index.jsp"><i class="fa fa-fw fa-edit"></i> Produto</a>
                     </li>
                     <li>
-                        <a href="../usuario/index.jsp"><i class="fa fa-fw fa-bar-chart-o"></i> Usuário</a>
+                        <a href="../usuario/index.jsp"><i class="fa fa-fw fa-edit"></i> Usuário</a>
+                    </li>
+                    <li>
+                        <a href="../relatorio/index.jsp"><i class="fa fa-fw fa-bar-chart-o"></i> Relatório de Venda</a>
                     </li>
                     
                 </ul>

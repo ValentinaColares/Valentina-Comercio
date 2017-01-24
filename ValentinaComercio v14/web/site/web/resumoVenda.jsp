@@ -1,3 +1,5 @@
+<%@page import="util.EnviarEmail"%>
+<%@page import="modelo.ItemvendaPK"%>
 <%@page import="dao.VendaDAO"%>
 <%@page import="java.util.Date"%>
 <%@page import="modelo.Venda"%>
@@ -10,6 +12,7 @@
 <%
     Carrinho carrinho = new Carrinho();
     Itemvenda itemVenda = new Itemvenda();
+    ItemvendaPK ivpk = new ItemvendaPK();
     Cliente cliente = new Cliente();
     ItemvendaDAO itemVendaDAO = new ItemvendaDAO();
     Venda venda = new Venda();
@@ -29,23 +32,69 @@
         response.sendRedirect("index.jsp");
 
     }
-    for(ItemCarrinho itemCar: carrinho.getListaCarrinho() ){
-        itemVenda.setProduto(itemCar.getProduto());
-        itemVenda.setPreco(itemCar.getProduto().getPreco().doubleValue());
-        itemVenda.setQuant(itemCar.getQuantidade());
-        //itemVenda.setItemvendaPK(itemvendaPK);
-        listItemvenda.add(itemVenda);
-        
-        itemVendaDAO.incluir(itemVenda);
-    }
     
     venda.setCodcliente(cliente.getCodigo());
     venda.setCodstatus(1);
     venda.setDatavenda(data);
     venda.setTotal(carrinho.valorTotal());  
     venda.setItemvendaList(listItemvenda);
-    
+
     vendaDAO.incluir(venda);
+         
+    for(ItemCarrinho itemCar: carrinho.getListaCarrinho() ){      
+        itemVenda.setProduto(itemCar.getProduto());
+        itemVenda.setPreco(itemCar.getProduto().getPreco().doubleValue());
+        itemVenda.setQuant(itemCar.getProduto().getQuant());
+        //setando o intemvendapk
+        ivpk.setCodproduto(itemVenda.getProduto().getCodigo());
+        ivpk.setCodvenda(venda.getCodigo());
+        itemVenda.setItemvendaPK(ivpk);
+        
+        listItemvenda.add(itemVenda);
+        
+        itemVendaDAO.incluir(itemVenda);
+    }
+    
+    //ENVIO DE EMAIL
+    
+    String mensagem = null;
+    
+    if (request.getMethod().equals("POST")) {
+        EnviarEmail enviar = new EnviarEmail();
+        enviar.setEmailDestinatario("programatche@gmail.com");
+        enviar.setAssunto("Contato - AgroSoftware");
+
+        //uso StringBuffer para otimizar a concatenação 
+        //de string
+
+        StringBuffer texto = new StringBuffer(); 
+        texto.append("<h2 align='center'>AgroSoftware</h2>");
+        texto.append("Informações Enviadas:<br/>");
+        texto.append("Software: ");
+        texto.append(request.getParameter("txtNomeSoftware"));
+        texto.append("<br/>");
+        texto.append("Nome Contato: ");
+        texto.append(request.getParameter("txtNomeContato"));
+        texto.append("<br/>");
+        texto.append("Email Contato: ");
+        texto.append(request.getParameter("txtEmail"));
+        texto.append("<br/>");
+        texto.append("Url: ");
+        texto.append(request.getParameter("txtUrl"));
+
+        enviar.setMsg(texto.toString());
+
+        boolean enviou = enviar.enviarHotmail();
+        if (enviou) {
+
+                mensagem = "Dados enviados com sucesso";
+
+            } else {
+                mensagem = "Não foi enviar as informações";
+
+            }
+    }
+    
 
     
     
