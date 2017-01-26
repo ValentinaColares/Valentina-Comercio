@@ -7,6 +7,8 @@
    
     //se o envio for post add o carrinho
     Carrinho carrinho;
+    ItemCarrinho itemCarrinho = new ItemCarrinho();
+    
     if(session.getAttribute("carrinho")!= null){
         carrinho = (Carrinho)session.getAttribute("carrinho");
     }else{
@@ -14,42 +16,51 @@
     }
     
     if(request.getMethod().equals("POST")){
-        Integer codigoCar = Integer.parseInt(request.getParameter("txtCodigo"));
-        Integer qtd = Integer.parseInt(request.getParameter("txtQuantidade"));
-    
-        ItemCarrinho itemCarrinho = new ItemCarrinho();
-        itemCarrinho.setQuantidade(qtd);
-        Produto produto = pDAO.buscarPorChavePrimaria(codigoCar);
-        itemCarrinho.setProduto(produto);
-        
-        //adiciona ao carrinho
-        //verificar se a lista ja existe
-         //vejo se o produto ja existe no carrinho com um for para percorrer a lista de itens, se o codigo for igual incrementa a quantidade
-        if(carrinho.getListaCarrinho() == null){
-            List <ItemCarrinho> listaCarrinho = new ArrayList<ItemCarrinho>();
-            listaCarrinho.add(itemCarrinho);
-            carrinho.setListaCarrinho(listaCarrinho);
-                  
-        }
-        //ItemCarrinho itemTemp = carrinho.metodo que eu vou fazer        
-        else if(carrinho.getListaCarrinho() != null){
-            Boolean certo = false;
+        if(request.getParameter("excluir") != null){ //colocar o excluir
+            Produto obj = pDAO.buscarPorChavePrimaria(Integer.parseInt(request.getParameter("codigo")));
             for(ItemCarrinho item: carrinho.getListaCarrinho()){
-                if(item.getProduto().getCodigo() == codigoCar){
-                    item.setQuantidade(item.getQuantidade() + Integer.parseInt(request.getParameter("txtQuantidade")));   
-                    certo = true;
+                if(item.getProduto().getCodigo() == obj.getCodigo()){
+                    carrinho.getListaCarrinho().remove(item);
                 }
+            }
                 
+        }else{
+            
+            Integer codigoCar = Integer.parseInt(request.getParameter("txtCodigo"));
+            Integer qtd = Integer.parseInt(request.getParameter("txtQuantidade"));
+
+            itemCarrinho.setQuantidade(qtd);
+            Produto produto = pDAO.buscarPorChavePrimaria(codigoCar);
+            itemCarrinho.setProduto(produto);
+
+            //adiciona ao carrinho
+            //verificar se a lista ja existe
+             //vejo se o produto ja existe no carrinho com um for para percorrer a lista de itens, se o codigo for igual incrementa a quantidade
+            if(carrinho.getListaCarrinho() == null){
+                List <ItemCarrinho> listaCarrinho = new ArrayList<ItemCarrinho>();
+                listaCarrinho.add(itemCarrinho);
+                carrinho.setListaCarrinho(listaCarrinho);
+
             }
-            if(!certo){
-                carrinho.getListaCarrinho().add(itemCarrinho);
+            //ItemCarrinho itemTemp = carrinho.metodo que eu vou fazer        
+            else if(carrinho.getListaCarrinho() != null){
+                Boolean certo = false;
+                for(ItemCarrinho item: carrinho.getListaCarrinho()){
+                    if(item.getProduto().getCodigo() == codigoCar){
+                        item.setQuantidade(item.getQuantidade() + Integer.parseInt(request.getParameter("txtQuantidade")));   
+                        certo = true;
+                    }
+
+                }
+                if(!certo){
+                    carrinho.getListaCarrinho().add(itemCarrinho);
+                }
             }
+
+
+            carrinho.valorTotal();
+            //salva o meu carrinho
         }
-        
-        
-        carrinho.valorTotal();
-        //salva o meu carrinho
-        
         //fazer um if para comparar oq vem do banco
         session.setAttribute("carrinho", carrinho);
         

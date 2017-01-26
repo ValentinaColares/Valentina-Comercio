@@ -1,3 +1,6 @@
+<%@page import="dao.ItemvendaDAO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="modelo.Itemvenda"%>
 <%@page import="modelo.Venda"%>
 <%@page import="java.util.List"%>
 <%@page import="dao.VendaDAO"%>
@@ -5,27 +8,32 @@
 
 <% 
     
-    VendaDAO dao = new VendaDAO();
+    VendaDAO Vendadao = new VendaDAO();
+    ItemvendaDAO itemVdao = new ItemvendaDAO();
     List<Venda> lista;
+    List<Itemvenda> itemVendalista = new ArrayList();
     
     if (request.getParameter("txtFiltro") != null) {
-        lista = dao.listar(request.getParameter("txtFiltro"));
+        lista = Vendadao.listar(request.getParameter("txtFiltro"));
         
     } else{ 
-   
-    //verifico se é excluir
+    
+        //verifico se é excluir
         if(request.getParameter("codigo") != null){
-            Venda obj = dao.buscarPorChavePrimaria(Integer.parseInt(request.getParameter("codigo")));
+            Venda obj = Vendadao.buscarPorChavePrimaria(Integer.parseInt(request.getParameter("codigo")));
             if(obj != null){
-                Boolean funcionou = dao.excluir(obj);
+                Boolean funcionou = Vendadao.excluir(obj);
                 if(funcionou){
                     //aqui depois vai ter uma janela
                 }
             }
         }
         
-        lista = dao.listar();
+        lista = Vendadao.listar();
+        itemVendalista = itemVdao.listar();
     }
+    
+    
     
     
 
@@ -48,16 +56,7 @@
     </div>
 </div>
 <!-- /.row -->
-<div class="row">
-    <div class="panel panel-default">
 
-        <div class="panel-body">
-
-            <a  href="add.jsp" class="btn  btn-primary btn-sm fa fa-plus-square-o" >Novo</a>
-            
-        </div>
-    </div>
-</div>
 <!-- /.row -->
 <div class="row">
     <div class="panel panel-default">
@@ -75,8 +74,11 @@
                 <thead>
                     <tr>
                         <th>Código</th>
-                        <th>Nome</th>
-                        <th >Ações</th>
+                        <th>Código do Cliente</th>
+                        <th>Data da Venda</th>
+                        <th>Produtos</th>
+                        <th>Valor da Venda</th>
+                        
                     </tr>
                 </thead>
                 <tbody>
@@ -85,8 +87,25 @@
                     %>
                     <tr>
                         <td><%=item.getCodigo() %></td>
-                        <td><%=item.getNome() %></td>
-                        <td><a href="upd.jsp?codigo=<%=item.getCodigo()%>" class="btn  btn-primary btn-sm">Alterar</a>
+                        <td><%= item.getCodcliente()%></td>
+                        <td><%=item.getDatavenda() %></td>
+                        
+                        
+                        <td><table class="table table-bordered table-hover">
+                            <% for(Itemvenda itemVenda: itemVendalista){ %>
+                            <tr>    
+                                <th>Título do Produto</th>
+                                <th>Preço do Produto</th>
+                                <th>Quantidade</th>
+                            </tr>
+                                <td><%=itemVenda.getProduto().getTitulo() %></td>
+                                <td><%=itemVenda.getProduto().getPreco() %></td>
+                                <td><%=itemVenda.getQuant() %></td> 
+                            <%} %>
+                        </table></td>
+            
+                        <td><%=item.getTotal() %></td>
+                        <td>
                             <button class="btn  btn-danger btn-sm" data-toggle="modal" data-target="#myModal" onclick="codigo=<%=item.getCodigo()%>">Excluir</button>  
                         </td>
                     </tr>

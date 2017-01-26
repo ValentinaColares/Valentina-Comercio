@@ -5,6 +5,7 @@
  */
 package dao;
 
+import java.util.List;
 import modelo.Venda;
 
 /**
@@ -14,5 +15,9 @@ import modelo.Venda;
 public class VendaDAO extends GenericDAO<Venda, Integer> {
     public VendaDAO(){
         super(Venda.class);
+    }
+    
+    public Venda filtro(String filtro) throws Exception{
+        return (Venda)em.createNamedQuery("Venda.findFiltro").setParameter("filtro", filtro).getSingleResult();
     }
 }

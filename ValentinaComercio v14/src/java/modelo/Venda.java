@@ -29,7 +29,10 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name = "venda")
 @NamedQueries({
-    @NamedQuery(name = "Venda.findAll", query = "SELECT v FROM Venda v")})
+    @NamedQuery(name = "Venda.findAll", query = "SELECT v FROM Venda v"),
+    @NamedQuery(name = "Venda.findFiltro", query = "SELECT v FROM Venda v WHERE v.codcliente like :filtro "
+            + "or v.datavenda like :filtro")
+})
 public class Venda implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -43,7 +46,7 @@ public class Venda implements Serializable {
     private int codcliente;
     @Basic(optional = false)
     @Column(name = "datavenda")
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date datavenda;
     @Basic(optional = false)
     @Column(name = "total")

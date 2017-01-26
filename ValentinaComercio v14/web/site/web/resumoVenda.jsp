@@ -56,19 +56,19 @@
     }
     
     //ENVIO DE EMAIL
-    
+    /*
     String mensagem = null;
     
     if (request.getMethod().equals("POST")) {
         EnviarEmail enviar = new EnviarEmail();
-        enviar.setEmailDestinatario("programatche@gmail.com");
-        enviar.setAssunto("Contato - AgroSoftware");
+        enviar.setEmailDestinatario("comercio@gmail.com");
+        enviar.setAssunto("Contato - Lojas CRUD");
 
         //uso StringBuffer para otimizar a concatenação 
         //de string
 
         StringBuffer texto = new StringBuffer(); 
-        texto.append("<h2 align='center'>AgroSoftware</h2>");
+        texto.append("<h2 align='center'>Lojas CRUD</h2>");
         texto.append("Informações Enviadas:<br/>");
         texto.append("Software: ");
         texto.append(request.getParameter("txtNomeSoftware"));
@@ -94,7 +94,7 @@
 
             }
     }
-    
+    */
 
     
     
