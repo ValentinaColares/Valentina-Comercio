@@ -84,15 +84,8 @@
 
         enviar.setMsg(texto.toString());
 
-        boolean enviou = enviar.enviarHotmail();
-        if (enviou) {
-
-                mensagem = "Dados enviados com sucesso";
-
-            } else {
-                mensagem = "Não foi enviar as informações";
-
-            }
+        enviar.enviarHotmail();
+        
     }
     */
 

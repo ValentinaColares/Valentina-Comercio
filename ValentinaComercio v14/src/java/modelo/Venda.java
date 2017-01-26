@@ -30,8 +30,8 @@ import javax.persistence.TemporalType;
 @Table(name = "venda")
 @NamedQueries({
     @NamedQuery(name = "Venda.findAll", query = "SELECT v FROM Venda v"),
-    @NamedQuery(name = "Venda.findFiltro", query = "SELECT v FROM Venda v WHERE v.codcliente like :filtro "
-            + "or v.datavenda like :filtro")
+    //@NamedQuery(name = "Venda.findFiltro", query = "SELECT v FROM Venda v WHERE v.codcliente like :filtro "
+            //+ "or v.datavenda like :filtro")
 })
 public class Venda implements Serializable {
 
