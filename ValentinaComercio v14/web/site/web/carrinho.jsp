@@ -74,21 +74,27 @@
 <div class="cart-items">
     <div class="container">
             <h2>Meu carrinho</h2>
-                <script>$(document).ready(function(c) {
+                <!--<script>$(document).ready(function(c) {
                             $('.close1').on('click', function(c){
                                     $('.cart-header').fadeOut('slow', function(c){
                                             $('.cart-header').remove();
                                     });
                                     });	  
                             });
-               </script>
+               </script> -->
              <div class="cart-header">
-                     <div class="close1"> </div>
+                    
                     <% 
                         if(carrinho.getListaCarrinho() != null){
                             for(ItemCarrinho item: carrinho.getListaCarrinho()){
                                 
                     %>
+                    <form action="#" method="post">
+                        <input type="hidden" name="excluirProduto" value="<%=item.getProduto().getCodigo() %>">
+                        <div class="btn_form">
+                            <button type="submit" class="close1"></button>
+                        </div>
+                    </form>
                     <div class="cart-sec simpleCart_shelfItem">
                                     <div class="cart-item cyc">
                                              <img src="../../Fotos/<%=item.getProduto().getImagem1() %>" class="img-responsive" alt="">

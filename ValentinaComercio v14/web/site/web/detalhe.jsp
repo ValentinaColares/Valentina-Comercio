@@ -12,24 +12,7 @@
     <div class="single">
             <div class="container">
                     <div class="single-grids">
-                            <div class="col-md-4 single-grid1">
-                                    <h2>account</h2>
-                                            <ul>
-                                                    <li><a href="login.html">login</a></li>
-                                                    <li><a href="login.html">Register</a></li>
-                                                    <li><a href="login.html">Forgot Your Password</a></li>
-                                                    <li><a href="account.html">my account</a></li>
-                                                    <li><a href="login.html">address books</a></li>
-                                                    <li><a href="login.html">wishlist</a></li>
-                                                    <li><a href="login.html">order history</a></li>
-                                                    <li><a href="login.html">downloads</a></li>
-                                                    <li><a href="login.html">reward points</a></li>
-                                                    <li><a href="login.html">return</a></li>
-                                                    <li><a href="login.html">transaction</a></li>
-                                                    <li><a href="login.html">newsletter</a></li>
-                                                    <li><a href="login.html">recurring payments</a></li>
-                                            </ul>
-                            </div>
+                            
                         <%%>
                             <div class="col-md-4 single-grid">		
                                     <div class="flexslider">

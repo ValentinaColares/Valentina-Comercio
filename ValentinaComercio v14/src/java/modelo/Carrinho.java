@@ -35,7 +35,7 @@ public class Carrinho {
     public Double valorTotal(){
         Double resultado = 0.0;
         for(ItemCarrinho item: listaCarrinho){
-            resultado = resultado + item.getProduto().getPreco().doubleValue() * item.getQuantidade();
+            resultado = resultado + (item.getProduto().getPreco().doubleValue() * item.getQuantidade());
         }
          
         return resultado;
